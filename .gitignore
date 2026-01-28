@@ -3,3 +3,6 @@ dist/
 .DS_Store
 *.log
 .ralph/logs/
+.ralph/.*
+.ralph/progress.json
+.ralph/status.json
