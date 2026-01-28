@@ -1,31 +1,29 @@
 # Ralph Fix Plan - butpt
 
 ## High Priority
-- [ ] Implement core time utilities (timezone, status logic)
-- [ ] Build basic Ubersicht widget with timeline bar
-- [ ] Add current time marker to timeline
+- [ ] Implement time utilities (timezone, hour calculation)
+- [ ] Implement status logic (night/morning/work/lunch/evening)
+- [ ] Build timeline bar component with color segments
+- [ ] Add current time marker (|) to timeline
+- [ ] Create row layout (bar + timezone + emoji + status + time)
+- [ ] Stack multiple rows vertically (aligned)
 
 ## Medium Priority
-- [ ] Add work status emoji indicators
-- [ ] Support multiple timezones
-- [ ] Add city name display
-- [ ] Implement dark/light mode
+- [ ] Add timezone config (add/remove timezones)
+- [ ] Implement sorting (manual, by time, by offset, by status)
+- [ ] Status emoji mapping
+- [ ] Dark theme styling
 
 ## Low Priority
 - [ ] Add Scriptable (iOS) version
+- [ ] Custom timezone labels
 - [ ] Performance optimization
-- [ ] Documentation
 
 ## Completed
-- [x] Project enabled for Ralph
-- [x] TypeScript + ESLint + Prettier configured
-- [x] package.json with build scripts
-- [x] npm dependencies installed
-- [x] src/ directory structure created
+- [x] Project setup (TypeScript, ESLint, Prettier)
 - [x] Ubersicht installed
-- [x] Initial commit pushed to GitHub
+- [x] Design spec created (EXPECTED.md)
 
 ## Notes
 - Run `npm run check` after each change
-- TypeScript strict mode enabled
-- Ubersicht uses JSX syntax
+- See EXPECTED.md for design reference
