@@ -17,11 +17,11 @@ const SEGMENTS = [
 ];
 
 const COLORS = {
-  night: '#9333ea',
-  morning: '#f97316',
-  working: '#22c55e',
-  lunch: '#f97316',
-  evening: '#f97316',
+  night: '#c4b5fd',
+  morning: '#fdba74',
+  working: '#86efac',
+  lunch: '#fcd34d',
+  evening: '#fda4af',
 };
 
 const STATUS_INFO = {
@@ -81,17 +81,19 @@ const getStatus = (hour) => {
 };
 
 const TimelineBar = ({ position }) => (
-  <div style={styles.barContainer}>
-    {SEGMENTS.map((seg, i) => (
-      <div
-        key={i}
-        style={{
-          ...styles.segment,
-          width: `${((seg.end - seg.start) / 24) * 100}%`,
-          backgroundColor: COLORS[seg.status],
-        }}
-      />
-    ))}
+  <div style={styles.barWrapper}>
+    <div style={styles.barContainer}>
+      {SEGMENTS.map((seg, i) => (
+        <div
+          key={i}
+          style={{
+            width: `${((seg.end - seg.start) / 24) * 100}%`,
+            height: '12px',
+            backgroundColor: COLORS[seg.status],
+          }}
+        />
+      ))}
+    </div>
     <div style={{ ...styles.marker, left: `${position}%` }} />
   </div>
 );
@@ -134,27 +136,32 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-    marginBottom: '8px',
+    height: '28px',
+    minHeight: '28px',
+    maxHeight: '28px',
+    marginBottom: '0px',
+  },
+  barWrapper: {
+    position: 'relative',
+    width: '200px',
+    height: '12px',
   },
   barContainer: {
-    position: 'relative',
     display: 'flex',
     width: '200px',
-    height: '8px',
-    borderRadius: '4px',
+    height: '12px',
+    borderRadius: '6px',
     overflow: 'hidden',
-  },
-  segment: {
-    height: '100%',
   },
   marker: {
     position: 'absolute',
-    top: '-2px',
-    width: '2px',
-    height: '12px',
+    top: '-3px',
+    width: '3px',
+    height: '18px',
     backgroundColor: '#fff',
-    borderRadius: '1px',
+    borderRadius: '2px',
     transform: 'translateX(-50%)',
+    boxShadow: '0 0 4px rgba(0,0,0,0.5)',
   },
   label: {
     width: '36px',
@@ -163,6 +170,10 @@ const styles = {
   },
   emoji: {
     fontSize: '16px',
+    width: '24px',
+    height: '24px',
+    lineHeight: '24px',
+    textAlign: 'center',
   },
   statusText: {
     width: '70px',
