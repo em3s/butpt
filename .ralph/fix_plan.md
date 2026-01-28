@@ -1,8 +1,6 @@
-# Ralph Fix Plan - Times Widget
+# Ralph Fix Plan - butpt
 
 ## High Priority
-- [ ] Install npm dependencies
-- [ ] Create src/ directory structure
 - [ ] Implement core time utilities (timezone, status logic)
 - [ ] Build basic Ubersicht widget with timeline bar
 - [ ] Add current time marker to timeline
@@ -22,6 +20,10 @@
 - [x] Project enabled for Ralph
 - [x] TypeScript + ESLint + Prettier configured
 - [x] package.json with build scripts
+- [x] npm dependencies installed
+- [x] src/ directory structure created
+- [x] Ubersicht installed
+- [x] Initial commit pushed to GitHub
 
 ## Notes
 - Run `npm run check` after each change

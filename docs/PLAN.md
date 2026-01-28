@@ -1,14 +1,13 @@
-# Times Widget - Implementation Plan
+# butpt - Implementation Plan
 
 ## Summary
-macOS world clock widget with timeline indicator. Shows colleague's local time and work status at a glance.
+macOS timezone widget with timeline indicator. Shows colleague's local time and work status at a glance. "wherever you are, but PT"
 
 ## Why Ubersicht?
-- No notarization required (open source, self-hosted)
-- HTML/CSS/JS - familiar web tech
-- React/JSX support
-- Desktop widget (not notification center)
-- Free, active community
+- No notarization required
+- TypeScript + React/JSX support
+- Desktop widget
+- Free, open source
 
 ## Phase 1: Core Widget
 - [ ] Basic Ubersicht widget structure
@@ -25,7 +24,6 @@ macOS world clock widget with timeline indicator. Shows colleague's local time a
 ## Phase 3: Polish
 - [ ] Dark/Light mode support
 - [ ] Compact/Expanded layouts
-- [ ] Settings UI (if possible)
 - [ ] Animation for time transition
 
 ## Phase 4: Distribution
@@ -33,9 +31,7 @@ macOS world clock widget with timeline indicator. Shows colleague's local time a
 - [ ] Documentation
 - [ ] Widget gallery submission
 
-## Technical Decisions
-
-### Timeline Visualization
+## Timeline Visualization
 ```
 San Francisco        Seoul
 [====|=========----] [-----|=============]
@@ -46,10 +42,10 @@ San Francisco        Seoul
 - `-` : Off hours
 - `|` : Current time marker
 
-### Status Logic
+## Status Logic
 ```
 Hour -> Status
-06-09: commute (if workday)
+06-09: commute
 09-12: working
 12-13: lunch
 13-18: working
@@ -57,34 +53,30 @@ Hour -> Status
 21-06: sleeping
 ```
 
-### Data Model
-```js
-{
-  id: 'sf-office',
-  name: 'San Francisco',
-  timezone: 'America/Los_Angeles',
-  workStart: 9,
-  workEnd: 18,
-  lunchStart: 12,
-  lunchEnd: 13
+## Data Model
+```typescript
+interface Location {
+  id: string;
+  name: string;
+  timezone: string;
+  workStart: number;
+  workEnd: number;
+  lunchStart: number;
+  lunchEnd: number;
 }
 ```
 
 ## File Structure
 ```
-ubersicht-widget/
-└── times.widget/
-    ├── index.jsx        # Main widget
-    ├── lib/
-    │   ├── time.js      # Timezone utils
-    │   ├── status.js    # Status logic
-    │   └── config.js    # User settings
-    └── styles.js        # CSS-in-JS
-```
+src/
+├── lib/
+│   ├── time.ts      # Timezone utils
+│   ├── status.ts    # Status logic
+│   └── config.ts    # User settings
+└── widget/
+    └── index.tsx    # Main widget
 
-## Next Steps
-1. Install Ubersicht if not present
-2. Create minimal working widget
-3. Implement timeline bar
-4. Add status indicators
-5. Multi-timezone support
+ubersicht-widget/
+└── butpt.widget/
+    └── index.jsx    # Compiled output
+```
